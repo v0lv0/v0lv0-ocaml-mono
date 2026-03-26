@@ -1,0 +1,4 @@
+(lang dune 3.21)
+(name camlang)
+(sections (lib .) (bin ../../bin) (doc ../../doc/camlang))
+(files (lib (META dune-package opam)) (bin (camlang)) (doc (README.md)))

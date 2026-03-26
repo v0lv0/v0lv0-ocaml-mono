@@ -1,0 +1,4 @@
+(executable
+ (public_name camlang)
+ (name main)
+ (libraries camlang))

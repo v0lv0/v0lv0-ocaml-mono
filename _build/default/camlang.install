@@ -1,0 +1,11 @@
+lib: [
+  "_build/install/default/lib/camlang/META"
+  "_build/install/default/lib/camlang/dune-package"
+  "_build/install/default/lib/camlang/opam"
+]
+bin: [
+  "_build/install/default/bin/camlang"
+]
+doc: [
+  "_build/install/default/doc/camlang/README.md"
+]
