@@ -1,7 +1,7 @@
 open Camlang
 
 let () =
-  let tokens = Lexer.tokenize "5213 + 3" in
+  let tokens = Camlang.Lexer.tokenize "let f = fun x -> x + 1" in
   List.iter (fun tok ->
     match tok with
     | Lexer.TInt n -> Printf.printf "TInt(%d)\n" n
