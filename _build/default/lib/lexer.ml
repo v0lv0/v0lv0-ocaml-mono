@@ -42,13 +42,15 @@ let rec tokenize_h (input:char list) : token list =
     | '+' -> TPlus :: tokenize_h rest
     | '-' ->(
       match rest with
-      | d:: rest' -> TArrow :: tokenize_h rest'
+      | '>' :: rest' -> TArrow :: tokenize_h rest'
       | _ -> TMinus :: tokenize_h rest
     )
     | '/' -> TDiv :: tokenize_h rest
     | '*' -> TTimes :: tokenize_h rest
     | '=' -> TEquals :: tokenize_h rest
     | '0'..'9' -> (match (consume_digit (input) 0) with |(a,b) -> TInt a :: tokenize_h b)
+    | '(' -> TLParen :: tokenize_h rest
+    | ')' -> TRParen :: tokenize_h rest
     | 'a'..'z' ->
       let (word_cl, rest') = consume_alpha_num input [] in
       let word_s = String.of_seq (List.to_seq word_cl) in
@@ -59,6 +61,8 @@ let rec tokenize_h (input:char list) : token list =
         | "if" -> TIf :: tokenize_h rest'
         | "then" -> TThen :: tokenize_h rest'
         | "else" -> TElse :: tokenize_h rest'
+        | "true" -> TBool true :: tokenize_h rest'
+        | "false" -> TBool false :: tokenize_h rest'
         | _ -> TIdent word_s :: tokenize_h rest'
         )
     | _ -> failwith (Printf.sprintf "Unexpected character")

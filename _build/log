@@ -1,4 +1,4 @@
-# dune exec bin/main.exe
+# dune build
 # OCAMLPARAM: unset
 # Shared cache: enabled-except-user-rules
 # Shared cache location: /Users/daniel/.cache/dune/db
@@ -13,11 +13,17 @@
 #  ; build_dir = In_build_dir "default"
 #  ; instrument_with = []
 #  }
-$ /Users/daniel/.opam/default/bin/ocamlc.opt -config > /var/folders/pk/8080g1ns7qj1lr2j1gywdw1m0000gn/T/dune_5b0ba6_output
-$ (cd _build/default && /Users/daniel/.opam/default/bin/ocamldep.opt -modules -impl lib/lexer.ml) > _build/default/lib/.camlang.objs/camlang__Lexer.impl.d
-$ (cd _build/default && /Users/daniel/.opam/default/bin/ocamlc.opt -short-paths -keep-locs -warn-error +a -g -bin-annot -bin-annot-occurrences -I lib/.camlang.objs/byte -no-alias-deps -opaque -open Camlang -o lib/.camlang.objs/byte/camlang__Lexer.cmo -c -impl lib/lexer.ml)
-$ (cd _build/default && /Users/daniel/.opam/default/bin/ocamlc.opt -short-paths -keep-locs -warn-error +a -g -bin-annot -bin-annot-occurrences -I bin/.main.eobjs/byte -I lib/.camlang.objs/byte -no-alias-deps -opaque -o bin/.main.eobjs/byte/dune__exe__Main.cmi -c -intf bin/main.mli)
-$ (cd _build/default && /Users/daniel/.opam/default/bin/ocamlopt.opt -short-paths -keep-locs -warn-error +a -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.camlang.objs/byte -I lib/.camlang.objs/native -cmi-file bin/.main.eobjs/byte/dune__exe__Main.cmi -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
-$ (cd _build/default && /Users/daniel/.opam/default/bin/ocamlopt.opt -short-paths -keep-locs -warn-error +a -g -I lib/.camlang.objs/byte -I lib/.camlang.objs/native -cmi-file lib/.camlang.objs/byte/camlang__Lexer.cmi -no-alias-deps -opaque -open Camlang -o lib/.camlang.objs/native/camlang__Lexer.cmx -c -impl lib/lexer.ml)
-$ (cd _build/default && /Users/daniel/.opam/default/bin/ocamlopt.opt -short-paths -keep-locs -warn-error +a -g -a -o lib/camlang.cmxa lib/.camlang.objs/native/camlang.cmx lib/.camlang.objs/native/camlang__Lexer.cmx)
-$ (cd _build/default && /Users/daniel/.opam/default/bin/ocamlopt.opt -short-paths -keep-locs -warn-error +a -g -o bin/main.exe lib/camlang.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ /Users/daniel/.opam/default/bin/ocamlc.opt -config > /var/folders/pk/8080g1ns7qj1lr2j1gywdw1m0000gn/T/dune_25a783_output
+$ (cd _build/default && /Users/daniel/.opam/default/bin/ocamldep.opt -modules -impl lib/parser.ml) > _build/default/lib/.camlang.objs/camlang__Parser.impl.d
+$ (cd _build/default && /Users/daniel/.opam/default/bin/ocamlc.opt -short-paths -keep-locs -warn-error +a -g -bin-annot -bin-annot-occurrences -I lib/.camlang.objs/byte -no-alias-deps -opaque -open Camlang -o lib/.camlang.objs/byte/camlang__Parser.cmo -c -impl lib/parser.ml)
+> File "lib/parser.ml", lines 8-12, characters 4-5:
+>  8 | ....(
+>  9 |       match h with
+> 10 |       | TInt i -> (ENum (VInt i), tl)
+> 11 |       | TFloat i ->( ENum (VFloat i), tl)
+> 12 |     )
+> Error (warning 8 [partial-match]): this pattern-matching is not exhaustive.
+>   Here is an example of a case that is not matched:
+>     (TLet|TFun|TArrow|TIn|TIf|TThen|TElse|TEquals|TPlus|TMinus|TTimes|TDiv|
+>     TLParen|TRParen|TEOF|TBool _|TIdent _)
+[2]
